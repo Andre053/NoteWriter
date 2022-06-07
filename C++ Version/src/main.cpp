@@ -1,13 +1,9 @@
 #include "helper.hpp"
 
-/*
-
-*/
-
 int main(int argc, char *args[]) {
 
     std::ofstream file;
-    std::string path = "../Notes/", flag, content;
+    std::string path = "../../Notes/", flag, content;
 
     if (argc < 3 || argc > 4) Usage(args[0]);
 
@@ -26,7 +22,9 @@ int main(int argc, char *args[]) {
     if (args[1][0] == '-') {
 
         char flag = args[1][1];
+        pathCheck(args[2]);
         path += args[2];
+        path += ".txt";
 
         switch (flag-'0') {
             case ('o'-'0'):
@@ -45,7 +43,10 @@ int main(int argc, char *args[]) {
     } 
     // if no flag, we just append
     else {
+        pathCheck(args[1]);
         path += args[1];
+        path += ".txt";
+
         content = args[2];
         file.open(path, std::ios::app);
     }

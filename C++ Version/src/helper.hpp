@@ -14,3 +14,13 @@ void Usage(char* progName) {
         << std::endl;
     exit(0);
 }
+
+void pathCheck(std::string path) {
+    // check inputted path to make sure there is no forward slashes
+    for (int i=0; i<path.length(); i++) {
+        if (path[i] == '/' || path[i] == '.') {
+            std::cout << "Illegal path was used" << std::endl;
+            exit(0);
+        }
+    }
+}
